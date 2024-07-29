@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map App</title>
+  <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openlayers/6.6.1/ol.css" />
+</head>
+<body>
+  <div class="navbar">
+    <ul class="navbar-list">
+      <li class="navbar-item"><a href="#" class="no-underline" id="show-coordinates">Show Coordinates</a></li>
+      <li class="navbar-item">
+        <select id="geometry-type" class="no-underline">
+          <option value="Point">Point</option>
+          <option value="LineString">LineString</option>
+          <option value="Polygon">Polygon</option>
+        </select>
+      </li>
+      <li class="navbar-item"><a href="#" class="no-underline" id="add-coordinate">Add Coordinate</a></li>
+    </ul>
+  </div>
+  <div id="map" class="map"></div>
+  <div id="popup" class="ol-popup">
+    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+    <div id="popup-content"></div>
+  </div>
+
+  <div id="coordinate-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Add Coordinate</h2>
+      <form id="coordinate-form">
+        <label for="coordinate-name">Name:</label>
+        <input type="text" id="coordinate-name" name="name" required>
+        <br>
+        <label for="coordinate-wkt">WKT:</label>
+        <input type="text" id="coordinate-wkt" name="wkt" required>
+        <br>
+        <input type="hidden" id="coordinate-id" name="id">
+        <br>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="datatable-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <table id="coordinates-table" class="display" style="width:100%"></table>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/6.6.1/ol.js"></script>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
